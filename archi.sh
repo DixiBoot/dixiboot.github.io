@@ -4,7 +4,6 @@ pacman -Sy
 
 fdisk /dev/sda <<EOF
 o
-
 n
 p
 1
