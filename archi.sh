@@ -30,6 +30,14 @@ echo '[multilib]' >> /etc/pacman.conf
 echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
 pacman -Syy
 
+grub-mkconfig -o /boot/grub/grub.cfg
+
+passwd
+
+pacman -S dialog wpa_supplicant --noconfirm
+pacman -S networkmanager network-manager-applet ppp --noconfirm
+systemctl enable NetworkManager
+
 
 
 
