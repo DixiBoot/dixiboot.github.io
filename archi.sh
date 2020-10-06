@@ -1,6 +1,7 @@
 #!/bin/bash
 
-pacman -Syu
+echo 'Sync Package Database...'
+pacman -Sy
 
 read -p "Computer Name: " hostname
 read -p "User Name: " username
