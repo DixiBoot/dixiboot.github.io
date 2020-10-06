@@ -4,7 +4,6 @@ pacman -Sy
 sfdisk --delete /dev/sda # Remove all partition
 fdisk /dev/sda <<EOF
 o
-
 n
 p
 1
