@@ -2,19 +2,6 @@
 
 pacman -Sy
 
-#(
-#	echo d
-#echo 1 # Delete Partition 1
-#	echo d
-#	echo 2
-#	echo d
-#	echo 3
-#	echo d
-#	echo o # Create a new empty DOS partition table
-#	
-#	echo w
-#) | fdisk /dev/sda
-
 fdisk /dev/sda <<EOF
 o
 
