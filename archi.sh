@@ -5,6 +5,7 @@ pacman -Sy
 
 # Or use
 dd if=/dev/zero of=/dev/sda bs=1 count=64 seek=446 conv=notrunc
+dd if=/dev/zero of=/dev/sda bs=1M count=64 conv=notrunc
 # dd -This standard command copies bytes from the source and writes them to the destination.
 
 fdisk /dev/sda <<EOF
