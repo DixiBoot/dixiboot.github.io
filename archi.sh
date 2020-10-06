@@ -29,6 +29,17 @@ a
 w
 EOF
 
+# Format partitions and enable swap
+mkswap /dev/sda1
+swapon /dev/sda1
+mkfs.ext4 /dev/sda2
+
+# Mount partitions
+mount /dev/sda2 /mnt
+
+# Install system to mount
+pacstrap /mnt base base-devel linux linux-firmware
+
 #read -p "Computer Name: " hostname
 #read -p "User Name: " username
 
