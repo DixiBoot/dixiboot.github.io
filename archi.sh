@@ -1,7 +1,7 @@
 #!/bin/bash
 
 pacman -Sy
-
+sfdisk --delete /dev/sda # Remove all partition
 fdisk /dev/sda <<EOF
 o
 
