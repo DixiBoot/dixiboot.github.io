@@ -30,21 +30,34 @@ w
 EOF
 
 # Format partitions and enable swap
-mkswap /dev/sda1
-swapon /dev/sda1
-mkfs.ext4 /dev/sda2
+mkswap /dev/sda1 -L swap
+mkfs.ext4 /dev/sda2 -L root
 
 # Mount partitions
 mount /dev/sda2 /mnt
+swapon /dev/sda1
 
 # Install system to mount
 pacstrap /mnt base base-devel linux linux-firmware
 
-genfstab -U /mnt >> /mnt/etc/fstab
+genfstab -pU /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
 ln -sf /usr/share/zoneinfo/Europe/Minsk /etc/localtime
+echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen 
+locale-gen
+
 hwclock --systohc --utc
+
+pacman -S grub --noconfirm
+
+echo 'Раскомментируем репозиторий multilib Для работы 32-битных приложений в 64-битной системе.'
+echo '[multilib]' >> /etc/pacman.conf
+echo 'Include = /etc/pacman.d/mirrorlist' >> /etc/pacman.conf
+pacman -Syy
+
+
 
 
 #read -p "Computer Name: " hostname
