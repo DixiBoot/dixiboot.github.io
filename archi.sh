@@ -1,7 +1,15 @@
 #!/bin/bash
 
-echo 'Sync Package Database...'
 pacman -Sy
+
+(
+	echo d
+	echo 1
+	echo d
+	echo 2
+	echo d
+	echo w
+) | fdisk /dev/sda
 
 read -p "Computer Name: " hostname
 read -p "User Name: " username
