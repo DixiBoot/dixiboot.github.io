@@ -15,6 +15,8 @@ pacstrap /mnt base base-devel linux linux-firmware
 genfstab -pU /mnt >> /mnt/etc/fstab
 arch-chroot /mnt
 
+exit
+
 ln -sf /usr/share/zoneinfo/Europe/Minsk /etc/localtime
 echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
 echo "ru_RU.UTF-8 UTF-8" >> /etc/locale.gen 
