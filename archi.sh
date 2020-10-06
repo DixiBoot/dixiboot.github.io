@@ -1,42 +1,13 @@
 #!/bin/bash
 
 pacman -Sy
-# sfdisk --delete /dev/sda # Remove all partition
-
-# Or use
-dd if=/dev/zero of=/dev/sda bs=1 count=64 seek=446 conv=notrunc
-dd if=/dev/zero of=/dev/sda bs=1M count=64 conv=notrunc
-# dd -This standard command copies bytes from the source and writes them to the destination.
-
-fdisk /dev/sda <<EOF
-o
-
-n
-p
-1
-
-+1G
-n
-p
-2
-
-
-t
-1
-82
-
-a
-2
-w
-EOF
+cfdisk /dev/sda
 
 # Format partitions and enable swap
+mkfs.ext4 /dev/sda2
 mkswap /dev/sda1 -L swap
-mkfs.ext4 /dev/sda2 -L root
-
-# Mount partitions
-mount /dev/sda2 /mnt
 swapon /dev/sda1
+mount /dev/sda2 /mnt
 
 # Install system to mount
 pacstrap /mnt base base-devel linux linux-firmware
