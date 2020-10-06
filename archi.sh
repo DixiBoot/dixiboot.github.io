@@ -40,6 +40,13 @@ mount /dev/sda2 /mnt
 # Install system to mount
 pacstrap /mnt base base-devel linux linux-firmware
 
+genfstab -U /mnt >> /mnt/etc/fstab
+arch-chroot /mnt
+
+ln -sf /usr/share/zoneinfo/Europe/Minsk /etc/localtime
+hwclock --systohc --utc
+
+
 #read -p "Computer Name: " hostname
 #read -p "User Name: " username
 
