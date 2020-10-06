@@ -3,6 +3,13 @@
 pacman -Sy
 cfdisk /dev/sda
 
+(
+echo a;
+echo 2;
+
+echo w;
+) | fdisk /dev/sda
+
 # Format partitions and enable swap
 mkfs.ext4 /dev/sda2
 mkswap /dev/sda1 -L swap
